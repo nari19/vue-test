@@ -1,0 +1,33 @@
+<!-- 
+    テキストのバインディング
+        テンプレートに下記のようなプロパティ名を記述することで、その場所に値を
+        描画する
+    繰り返しの描画
+        一覧リストは、dataオブジェクトに登録された配列やオブジェクトからv-forディレクティブを
+        使用して要素を繰り返し描画できる
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             <p>{{message}}</p>
+             
+             <ol>
+                 <li v-for="item in list">{{item}}</li>
+             </ol>
+         </div>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    message: 'Hello Vue.js!',
+                    list: ['いちご', 'ばなな', 'いちご']
+                }
+            })
+        </script>
+    </body>
+ </html>

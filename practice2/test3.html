@@ -1,0 +1,35 @@
+<!-- 
+    属性のデータバインディング
+        Mustacheはテキストコンテンツ特有の貴方のため、属性に使用することはできない
+        不可能 => <input type="text" value="{{message}}">
+        属性へのバインドにはv-bindディレクティブを使用する
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             <!-- 属性へのバインド -->
+             <input type="text" v-bind:value="message">
+             <!-- 省略記法 -->
+             <input type="text" :value="message">
+
+             
+         </div>
+     </body>
+     <script>
+         new Vue({
+             el: '#app',
+             data: {
+                message: 'Hello Vue.js!',
+                scroll: 0
+             },
+             mounted: function() {
+                 this.scroll = 100 // 要素のスクロール量を操作
+             }
+         })
+     </script>
+ </html>

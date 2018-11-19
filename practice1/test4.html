@@ -1,0 +1,25 @@
+<!-- 
+    フォーム入力との同期
+        データとフォームの入力項目をバインドするには、v-modelディレクティブを使用する
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             <p>{{message}}</p>
+             <input v-model="message">
+         </div>
+         <script>
+             new Vue({
+                el: '#app',
+                data: {
+                    message: '初期メッセージ'
+                }
+            })
+        </script>
+    </body>
+ </html>

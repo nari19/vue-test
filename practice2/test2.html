@@ -1,0 +1,41 @@
+<!-- 
+    テキストのデータバインディング
+        Mustache(マスタッシュ) 中括弧で記述する記法
+        ディレクティブと同じでJavaScriptの式が記述できる
+        次のような文は使用できない  {{ var foo = message }}
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             <p>{{message.value}}</p>
+             <p>{{message.value.length}}</p>
+
+             <p>{{list[2]}}</p>
+             <p>{{list[num]}}</p>
+             
+             <!-- 算出プロパティ -->
+             <p>{{ message.length => 10 ? '10文字以上': '10文字未満'}}</p><!--  条件によってテキストを変更する-->
+             <p>{{ Math.round(3.14)}}</p><!--  小数点を丸めたい-->
+         </div>
+         <script>
+             new Vue({
+                 el: '#app',
+                 data: {
+                    // オブジェクトデータ
+                    message: {
+                        value: 'Hello Vue.js!'
+                    },
+                    // 配列データ
+                    list: ['りんご', 'ばなな', 'いちご'],
+                    // 別のデータを使用してlistから取り出す要素を動的に
+                    num: 1
+                }
+            })
+        </script>
+    </body>
+ </html>

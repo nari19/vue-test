@@ -1,0 +1,31 @@
+<!-- 
+    Vue.jsテンプレート 
+        Vue.jsでは、DOMを構築する手段として一般的に「テンプレート」を使用する
+        このテンプレートの構文は、HTMLベースになっているためエディタとの親和性が高い
+        主なものにV-ifやV-bind、keyといったものがある
+    ディレクティブ
+        特に名前が「v-」から始まっている属性は「ディレクティブ」と呼ばれ、
+        主にデータバインディングを行うために使用される
+        ディレクティブの値はJavaScriptの単一な式ということが重要なポイントとなる
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             <div key="id"></div>
+             <div v-bind:key="id"></div>
+         </div>
+     </body>
+     <script>
+         new Vue({
+             el: '#app',
+             data: {
+                 
+             }
+         })
+     </script>
+ </html>

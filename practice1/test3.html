@@ -1,0 +1,26 @@
+<!-- 
+    イベントの利用
+        イベントを受け取る際に使えわれる擬似要素はv-onオブジェクトを利用する
+ -->
+ <!DOCTYPE html>
+ <html>
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             <button v-on:click="handleClick">Click</button>
+         </div>
+         <script>
+             new Vue({
+                 el: '#app',
+                 methods: {
+                     handleClick: function(event) {
+                         alert(event.target)
+                     }
+                 }
+            })
+        </script>
+    </body>
+ </html>

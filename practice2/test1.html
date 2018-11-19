@@ -1,0 +1,38 @@
+<!-- 
+    リアクティブなデータの定義
+        DOMの更新を自動化する「データバインディング」を行うには、テンプレートで使用する
+        全てのデータは「リアクティブデータ」として定義する必要がある
+        リアクティブデータとは、Vue.jsによって取得したとき（get）と代入したとき（set）の
+        フック処理が登録された、反応できるデータのことをいう。
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             
+         </div>
+         <script>
+             new Vue({
+                 el: '#app',
+                 data: {
+                     message: 'Vue.js!', // messageは変化を検知できるようになる
+                     
+                    //  dataオブジェクトの直下のプロパティは後から追加できないため、内容が
+                    // 決まっていない場合でも初期値や空データとして定義しておく必要がある
+                     newTodoText: '',
+                     visitCount: 0,
+                     hideCompletedTodos: false,
+                     todos: [],
+                     error: null,
+
+                     state: state,
+                    }
+            })
+            state.count++ // state.countはリアクティブデータになっている
+        </script>
+    </body>
+ </html>
