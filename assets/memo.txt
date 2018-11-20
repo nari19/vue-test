@@ -4,3 +4,5 @@ vue.jsコンポーネント
     Element
     Onsen UI
 
+データの内容の確認
+    <pre>{{ $data }}</pre>

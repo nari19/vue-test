@@ -1,0 +1,43 @@
+<!-- 
+    テンプレートに置ける条件分岐
+        v-ifとv-showディレクティブは、付与した要素の描画または表示に条件を適用する
+        条件を満たさなかった場合、次のように描画される
+        v-if    コメント化
+        v-show  styleの付与　"display: none;"
+    使い分け
+        v-if => 内側にディレクティブやコンポーネントを多用していたり、特定のデータを持っていないとエラーが起こる場合
+        v-show => 内側にディレクティブやコンポーネントが少なく、切り替えの頻度が高いもの
+                  内側は常にリアクティブで監視されている
+    <template>タグによるv-ifグループ化
+        いくつかの要素を同時に切り替えたい場合に利用する
+        v-showでは使用できない
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+            <!-- 条件分岐 -->
+            <div v-if="ok">v-if条件による描画</div>
+            <div v-show="ok">v-show条件による描画</div>
+
+            <!-- v-ifグループ化 -->
+            <template v-if="ok">
+                <header>タイトル</header>
+                <div>コンテンツ</div>
+            </template>
+            
+         </div>
+     </body>
+     <script>
+         new Vue({
+             el: '#app',
+             data: {
+                 ok: false
+             }
+         })
+     </script>
+ </html>

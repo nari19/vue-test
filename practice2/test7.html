@@ -1,0 +1,43 @@
+<!-- 
+    複数の属性のデータバインディング
+        ときに大量のプロパティをそれぞれ属性にバインドしようとすると、
+        どうしてもテンプレートが冗長になっていまうことがある
+        対策として、v-bindディレクティブの引数部分を省略してオブジェクトを
+        渡すと、一括バインドができるためテンプレートの可読性を保つことができる
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             <!-- プロパティを全てバインドしようとすると冗長に... -->
+             <img v-bind:src="item.src"
+                  v-bind:alt="item.alt"
+                  v-bind:width="item.width"
+                  v-bind:height="item.height">
+
+            <!--  省略したオブジェクトを渡す一括バインド-->
+            <img v-bind="item">
+            <!-- 引数を持ったv-bindを併用すれば、特定の要素のみに変更を加えることが可能 -->
+            <img v-bind="item" v-bind:id="'thumb-' + item.id">
+         </div>
+         <script>
+             new Vue({
+                 el: '#app',
+                 data: {
+                     item: {
+                         id: 1,
+                         src: 'item1.jpg',
+                         alt: '商品1サムネイル',
+                         width: 200,
+                         height: 200
+                     }
+                     
+                }
+            })
+        </script>
+    </body>
+ </html>

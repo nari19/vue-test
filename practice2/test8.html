@@ -1,0 +1,30 @@
+<!-- 
+    svgのデータバインディング
+        Vue.jsはSVGのDOMにもHTMLと同じようにデータバインディングが可能
+        そのため、Vue.jsとSVGの相性は抜群で、グラフィカルなUI操作や、
+        動きのあるグラフの作成も容易である  
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+            <!-- フォームのスライダーの数値と同期してSVGでマークアップした円の半径が変化する-->
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <circle cx="100" cy="75" v-bind:r="radius" fill="lightpink" />
+            </svg>
+            <input type="range" min="0" max="100" v-model="radius">
+         </div>
+         <script>
+             new Vue({
+                 el: '#app',
+                 data: {
+                     radius: 50
+                }
+            })
+        </script>
+    </body>
+ </html>

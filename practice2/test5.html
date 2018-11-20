@@ -1,0 +1,38 @@
+<!-- 
+    クラスとスタイルのデータバインディング
+        クラスとスタイル属性へのデータバインディングは少し特別で、オブジェクトや
+        配列をバインドするとクラス名やCSSプロパティとして展開される
+        スタイルのプロパティは、JavaScriptと同様にハイフンをキャメルケースで表す
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             
+            <!--クラス名でハイフンを含む場合は「'」で囲み記述する-->
+            <p v-bind:class="{ child: isChild, 'is-active': isActive}">Text</p>
+            <p v-bind:style="{ color: textColor, backgroundColor: bgColor}">Text</p>
+        
+            <!-- 
+                データバインディングをしていないプレーンな属性と併用した場合、描画結果では
+                上書きまたはマージされる
+            -->
+            <p style="color:blue" v-bind:style="{ color: textColor }">Text</p>
+         </div>
+         <script>
+             new Vue({
+                el: '#app',
+                data: {
+                    isChild: true,
+                    isActive: true,
+                    textColor: 'red',
+                    bgColor: 'lightgray'                     
+                }
+            })
+        </script>
+    </body>
+ </html>

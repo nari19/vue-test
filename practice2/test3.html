@@ -3,6 +3,10 @@
         Mustacheはテキストコンテンツ特有の貴方のため、属性に使用することはできない
         不可能 => <input type="text" value="{{message}}">
         属性へのバインドにはv-bindディレクティブを使用する
+    v-bindディレクティブの修飾子
+        .prop   属性の代わりにDOMプロパティとしてバインドする
+        .camel  ケバブケースの属性名をキャメルケースに変換する
+        .sync   双方向バインディングを行う
  -->
  <!DOCTYPE html>
  <html lang="ja">
@@ -17,7 +21,10 @@
              <!-- 省略記法 -->
              <input type="text" :value="message">
 
-             
+            <!-- DOMのtextContentプロパティにバインド -->
+            <div v-bind:text-content.prop="message">...</div>
+            <!-- DOMのscrollTopプロパティにバインド -->
+            <div v-bind:scroll-top.prop="scroll">...</div>
          </div>
      </body>
      <script>
