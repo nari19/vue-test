@@ -3,6 +3,11 @@
         v-ifディレクティブは、v-else-ifおよびv-elseディレクティブと組み合わさることで
         グループ化された複数の条件を指定できる
         v-showでは使用できない
+    v-else-if, v-elseとkey
+        v-ifのグループ化で同じ要素を使用したとき、属性の状態が残ったりトランジションが
+        発動しないなど、予期しない動作になることがある
+        その問題はグループ化されているそれぞれの要素に対してユニークなkeyを設定することで
+        回避できる
  -->
  <!DOCTYPE html>
  <html lang="ja">
@@ -12,15 +17,31 @@
      </head>
      <body>
          <div id="app">
-             
-         </div>
-         <script>
-             new Vue({
-                el: '#app',
-                data: {
-                    
-                }
-            })
+            <!-- v-else-ifおよびv-elseによるグループ化 -->
+            <div v-if="type === 'A'">
+                typeはA
+            </div>
+            <div v-else-if="type === 'B'">
+                typeはB
+            </div>
+
+            <!-- v-else-if, v-elseとkey -->
+            <!-- 二つのdivが違う要素だと明示的にする -->
+            <div v-if="loaded" key="content-visible">
+                content
+            </div>
+            <div v-else key="content-loading">
+                loading now...
+            </div>
+        </div>
+        <script>
+            new Vue({
+            el: '#app',
+            data: {
+                type: 'B',
+                loaded: false
+            }
+        })
         </script>
     </body>
  </html>
