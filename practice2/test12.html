@@ -1,0 +1,52 @@
+<!-- 
+    繰り返し描画しながら、様々な条件を適用する
+        リストレンダリングと他のディレクティブを組み合わせることで、リストの各要素に
+        条件を適用させることができる
+    描画と表示の条件
+        この方法では結果の数を表示することはできない
+        「○件ヒットしました」など条件に一致した数を表示させる場合は、
+        算出プロパティが適している
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+            <!--  条件を使ったクラスの操作-->
+            <ul>
+                <li v-for="item in list"
+                    v-bind:key="item.id"
+                    v-bind:class="{ tuyoi: item.hp > 300 }">
+                    ID.{{ item.id }} {{ item.name}} HP.{{ item.hp }}
+                    <!-- 条件を使ったクラスの操作 -->
+                    <span v-if="item.hp > 300">つよい！ </span>
+                </li>
+
+                <!-- 描画と表示の条件　hpプロパティが300より小さいものだけ表示 -->
+                <li v-for="item in list"
+                    v-bind:key="item.id"
+                    v-bind:class="{ tuyoi: item.hp > 300 }"
+                    v-if="item.hp < 300">
+                    ID.{{ item.id }} {{ item.name}} HP.{{ item.hp }}
+                </li>
+            </ul>
+            <!-- 描画と表示の条件 -->
+
+         </div>
+         <script>
+             new Vue({
+                el: '#app',
+                data: {
+                    list: [
+                        {id: 1, name: 'スライム', hp: 100},
+                        {id: 2, name: 'ゴブリン', hp: 200},
+                        {id: 3, name: ' ドラゴン', hp: 500}
+                    ]
+                }
+            })
+        </script>
+    </body>
+ </html>

@@ -1,0 +1,61 @@
+<!-- 
+    リストの更新
+        以下サンプル
+        「モンスターを追加」ボタンを作成してイベントをハンドルする
+        v-modelディレクティブを使って、フォームの入力文字を取得する
+    リストに要素を追加する
+        リストに新しい要素を追加するには、配列メソッドのpushやunshiftを使用する
+    リスト要素を削除する
+        特定の要素をリストから削除するには、配列メソッドのspliceを使用する
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             名前 <input v-model="name">
+            <button v-on:click="doAdd">モンスターを追加</button>
+            <ul>
+                <li v-for="item in list" v-bind:key="item.id">
+                    ID.{{ item.id }} {{ item.name}} HP.{{ item.hp }}
+                    <!-- 削除ボタンをv-for内に作成 -->
+                    <button v-on:click="doRemove(index)">モンスターを削除</button>
+                </li>
+            </ul>
+         </div>
+         <script>
+             new Vue({
+                el: '#app',
+                data: {
+                    name: 'キマイラ',
+                    list: [
+                        {id: 1, name: 'スライム', hp: 100},
+                        {id: 2, name: 'ゴブリン', hp: 200},
+                        {id: 3, name: ' ドラゴン', hp: 500}
+                    ]   
+                },
+                methods: {
+                    // 要素の追加
+                    doAdd: function() {
+                        // リスト内で1番大きいIDを取得
+                        var max = this.list.reduce(function(a, b) {
+                            return a > b.id ? a : b.id
+                        }, 0)
+                        this.list.push({
+                            id: max + 1,    // 現在の最大のIDに+1してユニークなIDを作成
+                            name: this.name,
+                            hp: 500
+                        })
+                    },
+                    // 要素の削除
+                    doRemove: function(index) {
+
+                    }
+                }
+            })
+        </script>
+    </body>
+ </html>

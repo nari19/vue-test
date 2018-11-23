@@ -2,6 +2,12 @@
     要素を繰り返し描画する
         リストデータを用いて要素を繰り返し描画するには、繰り返し描画
         させたいタグに対してv-forディレクティブを使用します。
+    キーの役割
+        v-bind:key="item.id"
+        リストの更新をするとき、要素の識別と効率的な描画処理をさせるため、
+        要素にユニークなkey属性を設定することが推奨されている
+        その際、要素内のユニークなIDであるidプロパティをキーとしてデータバインディング
+        する必要がある
  -->
  <!DOCTYPE html>
  <html lang="ja">
@@ -11,13 +17,27 @@
      </head>
      <body>
          <div id="app">
+             <ul>
+                <!-- <li v-for="各要素を代入する変数名　in 繰り返したい配列やオブジェクト"> -->
+                <li v-for="item in list" v-bind:key="item.id">
+                    Id.{{ item.id }} {{ item.name }} HP.{{ item.hp }}
+                </li>
+             </ul>
              
+             <!-- 変数部分を括弧で囲み、配列インデックスを任意に受け取れます -->
+             <li v-for="(item, index) in list">...</li>
+             <!-- オブジェクトなら「値」「キー」「インデックス」の順で任意に受け取れる -->
+             <li v-for="(item, key, index) in list">...</li>
          </div>
          <script>
              new Vue({
                 el: '#app',
                 data: {
-                    
+                    list: [
+                        {id: 1, name: 'スライム', hp: 100},
+                        {id: 2, name: 'ゴブリン', hp: 200},
+                        {id: 3, name: ' ドラゴン', hp: 500}
+                    ]                    
                 }
             })
         </script>
