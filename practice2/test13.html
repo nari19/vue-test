@@ -17,6 +17,7 @@
      <body>
          <div id="app">
              名前 <input v-model="name">
+             <!-- 追加ボタン -->
             <button v-on:click="doAdd">モンスターを追加</button>
             <ul>
                 <li v-for="item in list" v-bind:key="item.id">
@@ -52,7 +53,8 @@
                     },
                     // 要素の削除
                     doRemove: function(index) {
-
+                        // 受け取ったインデックスの位置から1個要素を削除
+                        this.list.splice(index, 1)
                     }
                 }
             })

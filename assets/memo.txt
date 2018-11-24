@@ -8,3 +8,6 @@ vue.jsコンポーネント
     <pre>{{ $data }}</pre>
 
 リスト更新(追加、削除, 置き換え)のサンプル => practice2-test13
+
+リスト要素に対する配列メソッド
+    push, pop, shift, unshift, splice, sort, reverse

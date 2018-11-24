@@ -1,0 +1,27 @@
+<!-- 
+    ユニークキーを持たない配列
+        次のようなキーを持たない配列は、操作をするには向かないが、単純に
+        表示するだけならシンプルに書くことができる    
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             <select>
+                 <option v-for="item in list">{{ item }}</option>
+             </select>
+         </div>
+         <script>
+             new Vue({
+                el: '#app',
+                data: {
+                    list: ['スライム', 'ゴブリン', 'ドラゴン']
+                }
+            })
+        </script>
+    </body>
+ </html>

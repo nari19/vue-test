@@ -1,0 +1,53 @@
+<!-- 
+    (リストの更新)
+    プロパティの追加
+        this.$setメソッドは、持っていないプロパティを、リアクティブデータとして追加
+        するために使用する
+    プロパティの更新
+        更新対象がプロパティなら、それがリスト要素内のデータであってもリアクティブである
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+               <ul>
+                   <li v-for="(item, index) in list" v-bind:key="item.id" v-if="item.hp">
+                        ID.{{ item.id }} {{ item.name}} HP.{{ item.hp }}
+                        <span v-if="item.hp < 50">瀕死</span>
+                        <!-- 更新ボタンをv-for内に作成 -->
+                        <button v-on:click="doAttack(index)">攻撃する</button>
+                   </li>
+               </ul>
+         </div>
+         <script>
+             new Vue({
+                el: '#app',
+                data: {
+                    name: 'キマイラ',
+                    list: [
+                        {id: 1, name: 'スライム', hp: 100},
+                        {id: 2, name: 'ゴブリン', hp: 200},
+                        {id: 3, name: ' ドラゴン', hp: 500}
+                    ]   
+                },
+                created: function() {
+                    // 全ての要素にactiveプロパティを追加
+                    this.list.forEach(function(item) {
+                        this.$set(item, 'active', false)
+                        // 「item.active = false」ではリアクティブにならない
+                    }, this)
+                },
+                methods: {
+                    // ボタンのクリックイベントのハンドラ
+                    doAttack: function(index) {
+                        this.list[index].hp -= 10 // HPを減らす
+                    }
+                }
+            })
+        </script>
+    </body>
+ </html>

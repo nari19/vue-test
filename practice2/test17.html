@@ -1,0 +1,31 @@
+<!-- 
+    文字列に対するv-for
+        文字列にv-forを使用すると、1文字ずつ別々の要素として描画される
+        これを利用することで、容易にデキストアニメーションを作成することができる
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             <span v-for="item in text">{{ item }}</span>
+         </div>
+         <!-- 実際の描画
+         <span>v</span>
+         <span>u</span>
+         <span>e</span> -->
+         <script>
+             new Vue({
+                el: '#app',
+                data: {
+                    text: {
+                        text: 'vue'
+                    }
+                }
+            })
+        </script>
+    </body>
+ </html>

@@ -1,0 +1,27 @@
+<!-- 
+    オプションにデータを持たないv-for
+        オプションにデータを持たず、範囲や配列リテラルを直接、使用することができる
+        次の例では<span>で囲まれた「1~15」の数字を描画する
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+            <span v-for="item in 15"> {{ item }}</span>
+            <br />
+            <span v-for="item in [1, 5, 10, 15]"> {{ item }}</span>
+         </div>
+         <script>
+             new Vue({
+                el: '#app',
+                data: {
+                    
+                }
+            })
+        </script>
+    </body>
+ </html>
