@@ -1,0 +1,31 @@
+<!-- 
+    複数行テキスト
+        複数行テキストの値の型は常に文字列
+
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             <textarea v-model="message"></textarea>
+             <pre>{{ message }}</pre>
+             <!-- 
+                テキストエリアでは以下のようなMustacheを使ったデータバインディングは
+                できないため、v-modelまたはv-bind:valueを使用する
+             -->
+             <textarea>{{ message }}</textarea>
+         </div>
+         <script>
+             new Vue({
+                el: '#app',
+                data: {
+                    message: 'Hello'
+                }
+            })
+        </script>
+    </body>
+ </html>

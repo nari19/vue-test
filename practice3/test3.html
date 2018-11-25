@@ -1,21 +1,46 @@
 <!-- 
-    
+    使用可能なイベント
+        使用できるDOMイベントは、アプリケーションを実行しているブラウザのサポート
+        状況に依存する
+        言い換えれば、ブラウザがサポートしているものならば全て使用できる    
  -->
  <!DOCTYPE html>
  <html lang="ja">
      <head>
          <meta charset="utf-8" />
          <script src="../vue/dist/vue.js"></script>
+         <style>
+             object {
+                 opacity: 1;
+                 transition: opacity 5s;
+             }
+             object.hide {
+                 opacity: 0;
+             }
+         </style>
      </head>
      <body>
          <div id="app">
-             
+             <!-- 画像のロードイベントをハンドル -->
+             <object v-on:load="show=true" v-bind:class="{hide: !show}" 
+                     type="image/svg+xml" data="https://af.nari19.me/round_design/RoundDesign2.svg" width="25%">
+             </object>
+
+             <!-- 要素のスクロールイベントをハンドル -->
+             <div v-on:scroll="handler">
+                 コンテンツ
+             </div>
+             <!-- マウスのホイールイベントをハンドル -->
+             <div v-on:mousewheel="handler">
+                 コンテンツ
+             </div>
          </div>
          <script>
              new Vue({
                 el: '#app',
                 data: {
-                    
+                    show: false,
+                    handler: true
                 }
             })
         </script>

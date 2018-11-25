@@ -1,0 +1,27 @@
+<!-- 
+    ラジオボタン
+        ラジオボタンのデフォルトの値の型は文字列となる    
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+            <label><input type="radio" v-model="vol" value="a"> A</label>
+            <label><input type="radio" v-model="vol" value="b"> B</label>
+            <label><input type="radio" v-model="vol" value="c"> C</label>
+            <p>{{ vol }}</p>
+         </div>
+         <script>
+             new Vue({
+                el: '#app',
+                data: {
+                    vol: ''
+                }
+            })
+        </script>
+    </body>
+ </html>

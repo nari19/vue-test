@@ -1,0 +1,37 @@
+<!-- 
+    キー修飾子
+        キー修飾子は、特定のキーコードの入力のみハンドラが呼び出されるようになる
+        一般的によく使用されているキーコードはエイリアスとして登録されている
+
+        使用可能なキーコードのエイリアス
+        .enter .tab .delete .esc .space .up .down .left .right
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             <!-- エンターキーが押されたときにハンドラを呼び出す -->
+             <input v-on:keydown.13="handler">
+             <input v-on:keydown.enter="handler">
+             <!-- いずれかの矢印キーが押されたとき(複数指定した場合、orを意味する) -->
+             <input v-on:keydown.up.down.left.right="handler">
+         </div>
+         <script>
+             new Vue({
+                el: '#app',
+                methods: {
+                    handler: function(comment) {
+                        alert("aaa")
+                    }
+                },
+                data: {
+                    
+                }
+            })
+        </script>
+    </body>
+ </html>

@@ -1,0 +1,30 @@
+<!-- 
+    フォームの入力値および選択値をデータと同期させる「双方向データバインディング」を
+    行うには、v-modelディレクティブを使用する
+
+    v-modelの使い方
+        v-modelディレクティブの値には、ユーザーの入力と同期させたいデータを指定する
+        次の例は、1行テキストフォームの入力値とmessageプロパティをバインディングしている
+        フォームの文字を編集すると、それと同期して瞬時に画面のメッセージが更新される
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+            <input v-model="message">
+            <p>{{ message }}</p> 
+         </div>
+         <script>
+             new Vue({
+                el: '#app',
+                data: {
+                    message: 'Hello!'
+                }
+            })
+        </script>
+    </body>
+ </html>

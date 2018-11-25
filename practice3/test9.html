@@ -1,0 +1,38 @@
+<!-- 
+    チェックボックス
+        チェックボックスは、単一要素およびグループ化した複数要素が使用できる
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             <label>
+                <!-- 単一要素　デフォルトの値の型はBoolean -->
+                 <input type="checkbox" v-model="val"> {{ val }}
+                 <br />
+                 <!-- 単一要素の値を設定 -->
+                 <input type="checkbox" v-model="valval" true-value="yes" false-value="no"> {{ valval }}
+             </label>
+             <br />
+             <!-- 複数要素のチェックボックスの値の型は配列 -->
+             <label><input type="checkbox" v-model="vol" value="A"> A</label>
+             <label><input type="checkbox" v-model="vol" value="B"> B</label>
+             <label><input type="checkbox" v-model="vol" value="C"> C</label>
+             <p>{{ vol }}</p>
+         </div>
+         <script>
+             new Vue({
+                el: '#app',
+                data: {
+                    val: true,
+                    valval: true,
+                    vol: []
+                }
+            })
+        </script>
+    </body>
+ </html>

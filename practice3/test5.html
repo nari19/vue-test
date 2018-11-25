@@ -1,0 +1,42 @@
+<!-- 
+    イベント修飾子
+        イベント修飾子は、クリックなどのDOMイベントの振る舞いを変更する修飾子である
+        以下がその例になる
+        .stop イベントのハブリングを停止する
+        .prevent リンクの繊維やsubmitなど、もとの処理をキャンセルする
+        .capture キャプチャモードでイベントを発生させる
+        .self event.target要素が、自分自身の時だけハンドラが呼び出される
+        .native 直接イベントを発火させる
+        .passive event.preventDefault()を呼び出さないことを明示的にする
+
+        クリックイベントでは、次の修飾子を使用してマウスボタンを指定できる
+        .left .right .middle
+
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             <div v-on:click.right="handler">example</div>
+             <!-- 右ボタンを押した時のコンテキストメニューを表示させない -->
+             <div v-on:click.right.prevent="handler">example</div>
+         </div>
+         <script>
+             new Vue({
+                el: '#app',
+                methods: {
+                    handler: function(comment) {
+                        console.log(comment)
+                    }
+                },
+                data: {
+                    
+                }
+            })
+        </script>
+    </body>
+ </html>
