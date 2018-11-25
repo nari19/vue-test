@@ -1,0 +1,29 @@
+<!-- 
+    DOMにアクセスするためにはインスタンスプロパティ$elと＄refsを使用する
+    この２つのプロパティは、DOMを参照するため、ライフサイクルのmounted以降
+    でなければ使用できない
+    
+    $elの使い方
+        ルートやコンポーネントのテンプレートを囲んでいるルート要素は、インスタンス
+        プロパティの$elを使って参照できる
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             
+         </div>
+         <script>
+             new Vue({
+                el: '#app',
+                mounted: function(){
+                    console.log(this.$el) // -> <div id="app"></div>
+                }
+            })
+        </script>
+    </body>
+ </html>

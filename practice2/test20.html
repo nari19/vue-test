@@ -1,0 +1,26 @@
+<!-- 
+    $refsの使い方
+        ルート以外の要素は、特別な属性refとインスタンスプロパティの$refsを使用する
+        以下ではテンプレートで対象となる要素にref属性で名前をつけている
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             <p ref="hello">Hello</p>
+             <!-- p要素にhelloという名前を付けた -->
+         </div>
+         <script>
+             new Vue({
+                el: '#app',
+                mounted: function() {
+                    console.log(this.$refs.hello) // p要素のDOM
+                }
+            })
+        </script>
+    </body>
+ </html>

@@ -1,0 +1,37 @@
+<!-- 
+    $elや$refsは一時的な変更
+        $elおよび$refsは、仮想DOMではないため描画処理の最適化をしない
+        操作するごとに描画をするため、DOMの更新に使用するには向いていないことに注意する
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             <button v-on:click="handleClick">カウントアップ</button>
+             <button v-on:click="show=!show">表示/非表示</button>
+             <span ref="count" v-if="show">0</span>
+         </div>
+         <script>
+             new Vue({
+                el: '#app',
+                data: {
+                    show: true
+                },
+                methods: {
+                    handleClick() {
+                        var count = this.$refs.count
+                        if (count) {
+                            count.innerText = parseInt(count.innerText, 10) + 1
+                        }
+                    }
+                }
+                // この例では、「カウントアップ」ボタンでいくらカウントを増加させても,v-ifの切り替えを
+                // 行うと元の
+            })
+        </script>
+    </body>
+ </html>

@@ -1,21 +1,39 @@
 <!-- 
     外部からデータを取得する
+        データが外部にある場合、はじめにJSONファイルやWebAPIから取得する必要がある
+        例ではJSONファイルのリストをVue.jsのデータとして取り込んでいる
  -->
  <!DOCTYPE html>
  <html lang="ja">
      <head>
          <meta charset="utf-8" />
          <script src="../vue/dist/vue.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/axios@0.17.1/dist/axios.min.js"></script>
      </head>
      <body>
          <div id="app">
-             
+             <ul>
+                 <li v-for="(item, index) in list" v-bind:key="item.id">
+                     ID.{{ item.id }} {{ item.name }} HP.{{ item.hp }}
+                 </li>
+             </ul>
          </div>
          <script>
              new Vue({
                 el: '#app',
                 data: {
-                    
+                    // あらかじめ空リストを用意しておく
+                    list: []
+                },
+                // 特定のタイミングで自動的に処理を挟むには、ライフサイクルフックを使用する
+                // インスタンス作成後すぐにデータが欲しいのでcreatedが適切
+                created: function() {
+                    axios.get('test18.json').then(function(response) {
+                        // 取得完了したらlistリストに代入
+                        this.list = response.data
+                    }.bind(this)).catch(function(e) {
+                        console.error(e)
+                    })
                 }
             })
         </script>

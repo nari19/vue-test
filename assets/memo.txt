@@ -11,3 +11,13 @@ vue.jsコンポーネント
 
 リスト要素に対する配列メソッド
     push, pop, shift, unshift, splice, sort, reverse
+
+practice2-test18はサーバーを立てて動かす
+    python -m http.server 8000
+
+ES2015文法
+    let     最代入可能
+    const   最代入不可
+    let, constはブロックスコープであるため、プロック内で宣言された変数は
+    ブロックの外からアクセスすることはできない
+    変数宣言では主にconstを使用し、インクリメントなどの再代入が必要な場合のみ、letを使用する
