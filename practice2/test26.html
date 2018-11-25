@@ -1,0 +1,48 @@
+<!-- 
+    v-cloak
+        v-cloakディレクティブは、インスタンスの準備が終わると自動的に
+        取り除かれる
+        これによりインスタンス作成までの間、Mustacheなどのコンパイル前のテンプレートが
+        画面に表示されてしまうのを防ぐことができる
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <style>
+         [v-clock] {
+             display: none;
+         }
+         /* 
+         次のようなスタイルを定義すると、画面の読み込み時には#app要素を
+         隠して、インスタンスが作成されるとv-clock属性が外れフェードインしながら
+         表示される
+          */
+         @keyframes clock-in {
+             0% { opacity: 0;}
+         }
+         #app {
+             animation: clock-in 1s;
+         }
+         #app[v-clock] {
+             opacity: 0;
+         }
+     </style>
+     <body>
+         <div id="app">
+             <div id="app" v-clock>
+                 {{ message }}
+             </div>
+         </div>
+         <script>
+             new Vue({
+                el: '#app',
+                data: {
+                    message: 'Hello Vue.js'
+                }
+            })
+        </script>
+    </body>
+ </html>

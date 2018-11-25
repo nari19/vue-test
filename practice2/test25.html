@@ -1,0 +1,32 @@
+<!-- 
+   v-html
+    Mustacheを使った描画では、XSS対策のため、必ずHTMLエンティティ化される
+    HTMLタグをそのまま表示させたい場合はv-htmlディレクティブを使用する 
+    主にAPIから取得したHTML文章を描画するときに利用させる
+    またv-htmlディレクティブを使用するデータ、テンプレートはXSSぜい弱性を
+    引き起こすため信頼できるコンテンツのみにすることが重要
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             <!-- Mustacheの代わりにhtmlを使用 -->
+             <span v-html="message"></span>
+             <br />
+             <!-- 実際の描画 -->
+             <span>Hello <strong>Vue.js</strong></span>
+         </div>
+         <script>
+             new Vue({
+                el: '#app',
+                data: {
+                    message: 'Hello <strong>Vue.js</strong>'
+                }
+            })
+        </script>
+    </body>
+ </html>

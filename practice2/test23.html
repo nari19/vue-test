@@ -1,0 +1,30 @@
+<!-- 
+    v-once
+        v-onceディレクティブは、初回だけテンプレートを評価しそれ以降は
+        静的なコンテンツとして扱う
+        描画された後にmessageプロパティが変わっても、DOMは変更されない
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             <a v-bind:href="url" v-once>
+                 Hello {{ message }}
+             </a>
+             <!-- 一回だけmessageの内容を表示して以降リアクティブを解除 -->
+             <a href="https://jp.vuejs.org/">Hello Vue.js!</a>
+         </div>
+         <script>
+             new Vue({
+                el: '#app',
+                data: {
+                    
+                }
+            })
+        </script>
+    </body>
+ </html>

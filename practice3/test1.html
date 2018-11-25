@@ -1,0 +1,32 @@
+<!-- 
+    イベントハンドラ …イベントに紐付ける処理の内容
+    ハンドル        …イベントハンドラをイベントと紐づけること
+    Vue.jsではDOMイベントの受け取りにテンプレートの中でv-on
+    ディレクティブを使用する
+
+    メソッドイベントハンドラ
+        メソッドイベントハンドラでは、コンポーネントのmethodオプションに
+        定義されているメソッド名を指定する
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             <button v-on:click="handleClick">クリック</button>
+         </div>
+         <script>
+             new Vue({
+                el: '#app',
+                data: {
+                    handleClick: function() {
+                        alert('クリックしたよ')
+                    }
+                }
+            })
+        </script>
+    </body>
+ </html>

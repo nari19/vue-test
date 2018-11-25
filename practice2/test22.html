@@ -1,0 +1,32 @@
+<!-- 
+    v-pre
+        v-preディレクティブは、子コンポーネントを含む内側のHTMLのコンパイルを
+        スキップして静的なコンテンツとして扱う
+        サーバーサイドレンダリング時のXSS対策に用いたり、操作をする予定のない長い
+        HTML文章を記述している部分に使用すると、パフォーマンスの向上につながる
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             <!-- Mustacheやディレクティブがそのまま表示される -->
+            <a v-bind:href="url" v-pre>
+                Hello {{ message }}
+            </a>
+            <br />
+            <a v-bind:href="url" >Hello {{ message }}</a>
+         </div>
+         <script>
+             new Vue({
+                el: '#app',
+                data: {
+                    
+                }
+            })
+        </script>
+    </body>
+ </html>

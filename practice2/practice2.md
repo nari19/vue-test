@@ -25,3 +25,10 @@
 ### DOMを直接参照する$elと$refs
 19. $elの使い方
 20. $refsの使い方
+21. $elや$refsは一時的な変更 
+## テンプレート制御ディレクティブ
+22. v-pre
+23. v-once
+24. v-text
+25. v-html
+26. v-cloak

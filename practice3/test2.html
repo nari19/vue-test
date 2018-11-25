@@ -1,0 +1,33 @@
+<!-- 
+    インラインメソッドハンドラ
+        インラインメソッドハンドラでは、ディレクティブの値にJavaScriptの式を直接、
+        記述する
+        式が使えるため、次のようなインライン処理ができる
+        インラインメソッドの式では、元のイベントオブジェクトまたはカスタムイベントの
+        引数を$eventという変数名で使用できる
+ -->
+ <!DOCTYPE html>
+ <html lang="ja">
+     <head>
+         <meta charset="utf-8" />
+         <script src="../vue/dist/vue.js"></script>
+     </head>
+     <body>
+         <div id="app">
+             <!-- ボタンをクリックすると値部分の処理をする -->
+             <button v-on:click="count++">クリック</button>
+             <p>{{ count }}</p>
+             <!-- もとのイベントオブジェクトとスコープ内のitemプロパティを引数として
+            持ち、handleClickメソッドを呼び出す -->
+            <button v-on:click="handleClick($event, item)">クリック</button>
+         </div>
+         <script>
+             new Vue({
+                el: '#app',
+                data: {
+                    count: 0
+                }
+            })
+        </script>
+    </body>
+ </html>
