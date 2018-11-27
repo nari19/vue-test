@@ -1,6 +1,6 @@
 <!-- 
     セレクトボックス
-        セレクトボックスは単一選択および複数洗濯が使用できる    
+        セレクトボックスは単一選択および複数選択が使用できる    
  -->
  <!DOCTYPE html>
  <html lang="ja">
@@ -10,13 +10,28 @@
      </head>
      <body>
          <div id="app">
-             
+             <!-- 単一選択 -->
+            <select v-model="val">
+                <option disabled="disabled">選択してください</option>
+                <option value="a">A</option>
+                <option value="b">B</option>
+                <option value="c">C</option>
+            </select>
+            <p>{{ val }}</p>
+            <!-- 複数選択 -->
+            <select v-model="vol" multiple>
+                <option value="a">A</option>
+                <option value="b">B</option>
+                <option value="c">C</option>
+            </select>
+             <p>{{ vol }}</p>
          </div>
          <script>
              new Vue({
                 el: '#app',
                 data: {
-                    
+                    val: '',
+                    vol: []
                 }
             })
         </script>
